@@ -1,19 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>LED Control</title>
+    <title>Control LED</title>
 </head>
 <body>
-  <h1>LED Control</h1>
-  <button onclick="setLedStatus('ON')">Turn LED ON</button>
-  <button onclick="setLedStatus('OFF')">Turn LED OFF</button>
-
-  <script>
-    function setLedStatus(status) {
-      fetch(`/led_status?status=${status}`)
-        .then(response => response.text())
-        .then(data => console.log(data));
-    }
-  </script>
+    <h1>ESP8266 LED Control</h1>
+    <form action="led-control.php" method="get">
+        <button type="submit" name="state" value="on">Turn LED ON</button>
+        <button type="submit" name="state" value="off">Turn LED OFF</button>
+    </form>
 </body>
 </html>
