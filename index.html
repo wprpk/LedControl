@@ -1,48 +1,19 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
-<title>ESP8266 LED Control</title>
-<style>
-    body { 
-        font-family: Arial, sans-serif; 
-        text-align: center; 
-        margin-top: 50px;
-        background-color: aqua; 
-    }
-    h1 { 
-        color: #a33333;
-    }
-    button { 
-        padding: 15px 30px; 
-        font-size: 24px; 
-        margin: 20px; 
-        cursor: pointer; 
-        border: none; 
-        border-radius: 5px;
-        height: 80%;
-        width: auto; 
-    }
-    .btn-on { 
-        background-color: #4CAF50; 
-        color: white; 
-    }
-    .btn-on:hover{
-        background-color: #317734;
-    }
-
-    .btn-off { 
-        background-color: #f44336; 
-        color: white; 
-    }
-    .btn-off:hover{
-        background-color: #8f2c25;
-    }
-
-</style>
+  <title>LED Control</title>
 </head>
 <body>
-<h1>ESP8266 LED Control</h1>
-<p><a href="/LED=ON\"><button class="btn-on">Turn On</button></a></p>
-<p><a href="/LED=OFF\"><button class="btn-off">Turn Off</button></a></p>
+  <h1>LED Control</h1>
+  <button onclick="setLedStatus('ON')">Turn LED ON</button>
+  <button onclick="setLedStatus('OFF')">Turn LED OFF</button>
+
+  <script>
+    function setLedStatus(status) {
+      fetch(`/led_status?status=${status}`)
+        .then(response => response.text())
+        .then(data => console.log(data));
+    }
+  </script>
 </body>
 </html>
